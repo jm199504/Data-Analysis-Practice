@@ -9,11 +9,11 @@
 
 | PassengerId | Survived | Pclass | Name                              | Sex    | Age | SibSp | Parch | Ticket  | Fare    | Cabin | Embarked |
 |-------------|----------|--------|-----------------------------------|--------|-----|-------|-------|---------|---------|-------|----------|
-| 172         | 1        | 3      | Johnson, Miss. Eleanor Ileen       | female | 1.0 | 1     | 1     | 347742  | 11.1333 | NaN   | S        |
-| 524         | 0        | 3      | Kassem, Mr. Fared                 | male   | NaN | 0     | 0     | 2700    | 7.2292  | NaN   | C        |
-| 452         | 0        | 1      | Foreman, Mr. Benjamin Laventall    | male   | 30.0| 0     | 0     | 113051  | 27.7500 | C111  | C        |
-| 170         | 0        | 1      | Van der hoef, Mr. Wyckoff          | male   | 61.0| 0     | 0     | 111240  | 33.5000 | B19   | S        |
-| 620         | 0        | 3      | Yasbeck, Mr. Antoni                | male   | 27.0| 1     | 0     | 2659    | 14.4542 | NaN   | C        |
+| 172         | 1        | 3      | Johnson       | female | 1.0 | 1     | 1     | 347742  | 11.1333 | NaN   | S        |
+| 524         | 0        | 3      | Kassem                 | male   | NaN | 0     | 0     | 2700    | 7.2292  | NaN   | C        |
+| 452         | 0        | 1      | Foreman    | male   | 30.0| 0     | 0     | 113051  | 27.7500 | C111  | C        |
+| 170         | 0        | 1      | Van          | male   | 61.0| 0     | 0     | 111240  | 33.5000 | B19   | S        |
+| 620         | 0        | 3      | Yasbeck                | male   | 27.0| 1     | 0     | 2659    | 14.4542 | NaN   | C        |
 
 字段说明：
 
@@ -305,7 +305,9 @@ plt.ylabel('Survival Rate (%)')
 plt.show()
 ```
 
-【补充图片】
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/titanic/pic1_survival_rates_by_passenger_class.png?raw=true)
+
+
 
 ####  1.12【分析四】乘客的性别与生还率关系
 
@@ -356,7 +358,9 @@ plt.ylabel('Survival Rate (%)')
 plt.show()
 ```
 
-####  【分析五】年龄与生还率关系
+【pic2】
+
+####  1.14 【分析五】年龄与生还率关系
 
 ```python
 # 读取 train.csv 文件
@@ -380,5 +384,144 @@ survival_rates = round((survived_counts / total_counts) * 100, 2)
 survival_rates
 ```
 
+输出结果：
 
+```
+AgeGroup
+Adult       36.27
+Children    55.56
+Teenager    47.22
+Elderly      0.00
+Name: count, dtype: float64
+```
 
+分析题五答案：
+
+```
+# 【分析五的结论】：根据年龄段进行分类，不同年龄段的乘客生还率如下：
+# 儿童（0-12岁）的生还率为55.56%
+# 少年（12-18岁）的生还率为47.22%
+# 成人（18-65岁）的生还率为36.27%
+# 老年（65-100岁）的生还率为0.00%
+```
+
+#### 1.15 【分析五的可视化】使用柱状图表示年龄与生还率关系
+
+```python
+# 创建柱状图
+plt.bar(survival_rates.index, survival_rates.values)
+
+# 设置图表标题和标签
+plt.title('Survival Rates by Age Group')
+plt.xlabel('Age Group')
+plt.ylabel('Survival Rate (%)')
+
+# 显示图表
+plt.show()
+```
+
+【pic3】
+
+#### 1.16【分析六】不同登船港口的乘客生存情况
+
+```python
+# 读取 train.csv 文件
+df = pd.read_csv('train.csv')
+
+# 对 Embarked 的缺失值进行处理
+df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
+
+# 统计不同港口上船的乘客人数以及生还人数
+embarked_count = df.groupby('Embarked')['PassengerId'].count()
+survived_count = df.groupby('Embarked')['Survived'].sum()
+
+# 计算不同港口上船的乘客生还率
+survival_rate = survived_count / embarked_count
+
+survival_rate
+```
+
+输出结果：
+
+```
+Embarked
+C    0.561538
+Q    0.333333
+S    0.321293
+dtype: float64
+```
+
+#### 1.17 【分析六的可视化】使用柱状图表示不同登船港口的乘客生存情况
+
+```python
+# 可视化结果
+plt.bar(['C', 'Q', 'S'], survival_rate, color=['#2a9df4', '#f44336', '#ffc107'])
+plt.xlabel('Embarked')
+plt.ylabel('Survival rate')
+plt.title('Survival Rate of Different Embarked Ports')
+plt.ylim(0.0, 1.0)
+plt.show()
+```
+
+【pic4】
+
+#### 1.18【分析七】登船港口为C的男性和女性的生存情况
+
+```python
+# 读取 train.csv 文件
+df = pd.read_csv('train.csv')
+
+# 筛选登船港口为 C 的数据
+embarked_c_df = df[df['Embarked'] == 'C']
+
+# 统计登船港口为 C 的男性和女性生存情况
+male_survived = embarked_c_df[(embarked_c_df['Sex'] == 'male') & (embarked_c_df['Survived'] == 1)]
+female_survived = embarked_c_df[(embarked_c_df['Sex'] == 'female') & (embarked_c_df['Survived'] == 1)]
+
+# 输出结果
+print("登船港口为 C 的男性生存人数:", len(male_survived))
+print("登船港口为 C 的女性生存人数:", len(female_survived))
+```
+
+输出结果：
+
+```
+登船港口为 C 的男性生存人数: 22
+登船港口为 C 的女性生存人数: 51
+```
+
+#### 1.19 【分析七的可视化】使用柱状图表示登船港口为C的男性和女性的生存情况
+
+```python
+# 读取 train.csv 文件
+df = pd.read_csv('train.csv')
+
+# 筛选登船港口为 C 的数据
+embarked_c_df = df[df['Embarked'] == 'C']
+
+# 统计登船港口为 C 的男性和女性生存情况
+male_survived = embarked_c_df[(embarked_c_df['Sex'] == 'male') & (embarked_c_df['Survived'] == 1)]
+female_survived = embarked_c_df[(embarked_c_df['Sex'] == 'female') & (embarked_c_df['Survived'] == 1)]
+
+# 可视化结果
+labels = ['Male', 'Female']
+survived_counts = [len(male_survived), len(female_survived)]
+
+plt.bar(labels, survived_counts, color=['#2196f3', '#f44336'])
+plt.xlabel('Gender')
+plt.ylabel('Survived Count')
+plt.title('Survival Count of Male and Female Passengers Embarked at C')
+plt.show()
+```
+
+【pic5】
+
+### 2.Bank Customer 数据
+
+|   id |   age | job          | marital   | education          | default   | housing   | loan   | contact   | month   |   ... |   campaign |   pdays |   previous | poutcome   |   emp_var_rate |   cons_price_index |   cons_conf_index |   lending_rate3m |   nr_employed | subscribe   |
+|-----:|------:|:-------------|:----------|:-------------------|:----------|:----------|:--------|:-----------|:--------|-------:|-----------:|--------:|-----------:|:-----------|---------------:|-------------------:|------------------:|------------------:|---------------:|:------------|
+|    1 |    51 | admin.       | divorced  | professional.course | no        | yes       | yes     | cellular   | aug     |   ... |          1 |     112 |          2 | failure    |            1.4 |              90.81 |            -35.53 |              0.69 |        5219.74 | no          |
+|    2 |    50 | services     | married   | high.school        | unknown   | yes       | no      | cellular   | may     |   ... |          1 |     412 |          2 | nonexistent|           -1.8 |              96.33 |            -40.58 |              4.05 |        4974.79 | yes         |
+|    3 |    48 | blue-collar  | divorced  | basic.9y           | no        | no        | no      | cellular   | apr     |   ... |          0 |    1027 |          1 | failure    |           -1.8 |              96.33 |            -44.74 |              1.5  |        5022.61 | no          |
+|    4 |    26 | entrepreneur | single    | high.school        | yes       | yes       | yes     | cellular   | aug     |   ... |         26 |     998 |          0 | nonexistent|            1.4 |              97.08 |            -35.55 |              5.11 |        5222.87 | yes         |
+|    5 |    45 | admin.       | single    | university.degree  | no        | no        | no      | cellular   | nov     |   ... |          1 |     240 |          4 | success    |           -3.4 |              89.82 |            -33.83 |              1.17 |        4884.7  | no          |
