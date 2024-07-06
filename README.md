@@ -358,7 +358,7 @@ plt.ylabel('Survival Rate (%)')
 plt.show()
 ```
 
-【pic2】
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/titanic/pic2_survival_rates_by_gender.png?raw=true)
 
 ####  1.14 【分析五】年龄与生还率关系
 
@@ -420,7 +420,7 @@ plt.ylabel('Survival Rate (%)')
 plt.show()
 ```
 
-【pic3】
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/titanic/pic3_survival_rates_by_age_group.png?raw=true)
 
 #### 1.16【分析六】不同登船港口的乘客生存情况
 
@@ -463,7 +463,7 @@ plt.ylim(0.0, 1.0)
 plt.show()
 ```
 
-【pic4】
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/titanic/pic4_survival_rate_of_different_embarked_ports.png?raw=true)
 
 #### 1.18【分析七】登船港口为C的男性和女性的生存情况
 
@@ -514,7 +514,7 @@ plt.title('Survival Count of Male and Female Passengers Embarked at C')
 plt.show()
 ```
 
-【pic5】
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/titanic/pic5_survival_count_of_male_and_female_passengers_embarked_at_C.png?raw=true)
 
 ### 2.Bank Customer 数据
 
@@ -525,3 +525,20 @@ plt.show()
 |    3 |    48 | blue-collar  | divorced  | basic.9y           | no        | no        | no      | cellular   | apr     |   ... |          0 |    1027 |          1 | failure    |           -1.8 |              96.33 |            -44.74 |              1.5  |        5022.61 | no          |
 |    4 |    26 | entrepreneur | single    | high.school        | yes       | yes       | yes     | cellular   | aug     |   ... |         26 |     998 |          0 | nonexistent|            1.4 |              97.08 |            -35.55 |              5.11 |        5222.87 | yes         |
 |    5 |    45 | admin.       | single    | university.degree  | no        | no        | no      | cellular   | nov     |   ... |          1 |     240 |          4 | success    |           -3.4 |              89.82 |            -33.83 |              1.17 |        4884.7  | no          |
+
+字段说明：
+
+- id：每个客户的唯一标识符。这可以是一个客户编号或其他唯一代码，用于区分不同的客户。
+- age：客户的年龄，以年为单位。
+- job：客户的工作或职业。这是判断客户收入水平、经济稳定性和风险状况的重要指标。
+- marital：客户的婚姻状况，包括已婚、单身、离异或丧偶等。婚姻状况可能与客户的财务决策和风险状况相关。
+- education：客户的教育水平。教育水平通常与收入水平和风险状况相关联。
+- default：客户是否有过违约记录。如果有违约，则可能标记为“是”，否则为“否”。
+- housing：指示客户是拥有住房还是租房。这与客户的财务状况有一定关联。
+- loan：表示客户是否有未偿还的贷款。这可以帮助银行了解客户的负债情况。
+- contact：与客户的联系方式，如手机、电话、电子邮件等。
+- month：数据收集或相关活动发生的月份。
+- campaign：客户接收到的营销活动的数量。
+- pdays：自上一次营销活动以来与客户最后一次联系的天数。
+- previous：在过去一个月内与客户的联系次数。
+- poutcome：上一次联系的结果，如“成功”、“失败”或“未发生”。
