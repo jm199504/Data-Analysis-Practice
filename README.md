@@ -588,7 +588,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 
-【pic1】
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/bank_customer/pic1_martial_status_by_education.png?raw=true)
 
 分组数据（`grouped_data`）：
 
@@ -642,7 +642,7 @@ plt.show()
 # 【分析一的结论】高中学历中结婚的比例达到了52.5%
 ```
 
-【pic2】
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/bank_customer/pic2_marital_status_of_high_school_graduates.png?raw=true)
 
 #### 【分析二】统计每个职业的分布情况
 
@@ -695,7 +695,7 @@ plt.ylabel('Job')
 plt.show()
 ```
 
-【pic3】
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/bank_customer/pic3_number_of_people_by_job.png?raw=true)
 
 #### 【分析三】统计20-30岁之间用户订阅该产品的比例分布
 
@@ -738,7 +738,7 @@ plt.title('Proportion of Subscribers Aged 20-30')
 plt.show()
 ```
 
-【pic4】
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/bank_customer/pic4_proportion_of_subscribers_aged_20_30.png?raw=true)
 
 #### 【分析三的可视化】使用柱状图绘制20-30岁之间用户订阅该产品的比例分布
 
@@ -750,6 +750,8 @@ plt.ylabel('Number of Subscribers')
 plt.title('Distribution of Subscribers Aged 20-30')
 plt.show()
 ```
+
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/bank_customer/pic5_distribution_of_subscribers_aged_20_30.png?raw=true)
 
 #### 【分析四】统计拥有房屋贷款、个人贷款、房屋贷款&个人贷款的人数，并计算其占比总人数
 
@@ -813,7 +815,7 @@ for i, count in enumerate(counts):
 plt.show()
 ```
 
-pic6
+![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/bank_customer/pic6_count_of_individuals_with_housing_loan_and_personal_loan.png?raw=true)
 
 【分析四的结论】
 
