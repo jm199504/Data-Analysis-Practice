@@ -493,7 +493,7 @@ plt.show()
 
 ![](https://github.com/jm199504/Data-Analysis-Practice/blob/main/images/titanic/pic5_survival_count_of_male_and_female_passengers_embarked_at_C.png?raw=true)
 
-### 2.Bank Customer 数据
+### 2.Bank Customer
 
 |   id |   age | job          | marital   | education          | default   | housing   | loan   | contact   | month   |   ... |   campaign |   pdays |   previous | poutcome   |   emp_var_rate |   cons_price_index |   cons_conf_index |   lending_rate3m |   nr_employed | subscribe   |
 |-----:|------:|:-------------|:----------|:-------------------|:----------|:----------|:--------|:-----------|:--------|-------:|-----------:|--------:|-----------:|:-----------|---------------:|-------------------:|------------------:|------------------:|---------------:|:------------|
